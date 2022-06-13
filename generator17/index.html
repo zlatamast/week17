@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button">Сгенерировать число</button>
+    <div class="results"></div>
+
+
+    <script>
+        document.querySelector('#button').addEventListener('click', () => {
+            let numbers = [];
+            let max;
+            let min;
+            let sum = 0;
+            let aver;
+            let mult = 1;
+            let numberRandom;
+            let numberStr;
+
+            for (let index = 0; index < 10; index++) {
+                numberRandom = Math.round(Math.random() * 20) - 10;
+                numbers.push(numberRandom);
+            }
+
+            numberStr = numbers.join(' ')
+
+            max = Math.max(...numbers);
+            min = Math.min.apply(Math, numbers);
+
+            for (const number of numbers) {
+                sum += number
+                mult *= number
+            }
+
+            aver = sum / 10;
+
+            document.querySelector('.results').innerHTML = `
+                <div>Сгенерировали: ${numberStr}</div>
+                <div>Минимальное: ${min}</div>
+                <div>Максимальное: ${max}</div>
+                <div>Среднее арифметическое: ${aver}</div>
+                <div>Сумма чисел: ${sum}</div>
+                <div>Произведение чисел: ${mult}</div>
+            `
+        })
+    </script>
+
+
+</body>
+
+</html>
